@@ -49,11 +49,12 @@
     .grid-item-2 {
             grid-column: 2;
             width:100%;
-                  
+            /*background-color: darkmagenta; */             
     }
     .grid-item-3 {
             grid-column: 3;
             width:100%;
+            direction:rtl;
          /*  align-items: left; */
 
     }
@@ -63,15 +64,7 @@
             /*grid-template-columns: 1fr 2fr 1fr; /* Adjust the number of columns as needed */
             grid-gap: 3px; /* Adjust the gap between grid items as needed */
             }
- 
-   /* .grid-content{
-            border-color: crimson;
-            border-style: double;
-            border-width: 20px;
-            margin-top:10px;         
-        }
-    */
-    .grid-item {
+   .grid-item {
             display: flex;
             flex-direction: column; 
             text-align: center;
@@ -82,8 +75,7 @@
             padding:20px;
             
         }
-
-        
+       
     .grid-1 {
             display:grid;
             grid-template-columns: repeat(4, 1fr); /* Adjust the nber of columns as needed */
@@ -91,78 +83,134 @@
             }
 
     h1{
-        font-style: italic;
+        font-style:normal;
         text-align: center;
-        font-weight: 900;
-      
+        font-weight:bolder;
+        color:gold;
+              
          } 
     h3{
         text-decoration: underline;
     }            
-    .clock {
-      font-family: "Courier New", monospace;
-      font-size: 25px;
-      color: blue;
-      background-color: gold;
-      text-align: center;
+ 
+    .date{
+        background-color:darkmagenta ;
+        color: white;
     }
+    .time{
+        /*background-color: crimson;*/
+        color: darkgreen;
+        font-weight: bolder;
+    }
+    th{
+        background-color:darkgreen;
+        color:antiquewhite
+    }
+    .prayer-time {
+      font-family: "Courier New", monospace;
+      font-size: 20px;
+      direction:rtl    ;
+      color: blue;
+    }
+    y{
+        color:white;
+        background-color:darkmagenta;
+        font-size: large;
+    }
+
 </style>
 <script>
-    function displayDigitalClock() {
+    function displayDate() {
+      var currentDate = new Date();
+      var day = getDayName(currentDate.getDay());
+      var month = getMonthName(currentDate.getMonth());
+      var date = currentDate.getDate();
+      var year = currentDate.getFullYear();
+
+      // Format the date
+      var formattedDate = day + ", " + month + " " + date + ", " + year;
+
+      // Display the date on the web page
+      document.getElementById("date").textContent = formattedDate;
+    }
+    function getDayName(dayIndex) {
+      var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      return days[dayIndex];
+    }
+    function getMonthName(monthIndex) {
+      var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+      return months[monthIndex];
+    }
+//------------
+      function displayTime() {
       var currentDate = new Date();
       var hours = currentDate.getHours();
       var minutes = currentDate.getMinutes();
       var seconds = currentDate.getSeconds();
-
       // Format the time
       var formattedTime = formatTime(hours, minutes, seconds);
-
-      // Display the time on the web page
-      document.getElementById("clock").textContent = formattedTime;
-
+      document.getElementById("time").textContent = formattedTime;
       // Update the clock every second
-      setTimeout(displayDigitalClock, 1000);
+      setTimeout(displayTime, 1000);
     }
-
     function formatTime(hours, minutes, seconds) {
       hours = addLeadingZero(hours);
       minutes = addLeadingZero(minutes);
       seconds = addLeadingZero(seconds);
-
       return hours + ":" + minutes + ":" + seconds;
     }
-
     function addLeadingZero(number) {
       if (number < 10) {
         return "0" + number;
       }
       return number;
     }
-  </script> 
+    function fetchPrayerTimes() {
+      fetch('https://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=1')
+        .then(response => response.json())
+        .then(data => {
+          var prayerTimes = data.data.timings;
+          displayPrayerTimes(prayerTimes);
+        })
+        .catch(error => {
+          console.log('Error fetching prayer times:', error);
+        });
+    }
+    function displayPrayerTimes(prayerTimes) {
+      document.getElementById("fajr").textContent = prayerTimes.Fajr;
+      document.getElementById("dhuhr").textContent = prayerTimes.Dhuhr;
+      document.getElementById("asr").textContent = prayerTimes.Asr;
+      document.getElementById("maghrib").textContent = prayerTimes.Maghrib;
+      document.getElementById("isha").textContent = prayerTimes.Isha;
+    }
+</script> 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
-<body onload="displayDigitalClock()">
+
+<body onload= "displayDate(); displayTime(); fetchPrayerTimes()" >
     <div class="grid-container">
         <div class="grid-item grid-item-1" >
-            <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i>&nbsp&nbspأخبار &nbsp</a>    
+            <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i><y>&nbsp&nbspأخبار &nbsp</y></a>    
+            <a  href="mailto:s.refaat@mail.com" class="link"><i class="fa fa-fw fa-envelope"></i><y>&nbsp Mail &nbsp </y></a>
             <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
-            <a href="https://wa-me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp</a>
-            <a  href="mailto:s.refaat@mail.com" class="link"><i class="fa fa-fw fa-envelope"></i>&nbsp Mail &nbsp </a><br>
+            <a href="https://wa-me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbsp&nbspWhatsApp</a>
         </div>
         <div class="grid-item grid-item-2">
-            <div class="shadow p-3 mb-3 badge-primary "><h1>مجتمع الريف اﻷوربي  </h1></div>
+            <div class="shadow p-2 badge-primary"><h1>مجتمع الريف اﻷوربي  </h1></div>
         </div>
         <div class="grid-item grid-item-3">
-            <div class="clock" id="clock"></div>
-            <a  href="view_gallery.html" class="link"> <i class="fa fa-camera-retro"></i>&nbsp معرض صور </a>
-            <a  href="map-page2.html"><i class="fa fa-search"></i>&nbsp الموقع</a>
+            <div class="date" id="date"></div>
+            <div class="time" id="time"></div>
+            <a  href="view_gallery.html" class="link"> <i class="fa fa-camera-retro"></i><y>&nbsp&nbsp معرض صور &nbsp&nbsp</y></a>
+            <a  href="map-page2.html"><i class="fa fa-search"></i><y>&nbsp الموقع &nbsp</y></a>
         </div>
     </div>
+    <hr>
     <!------------------>
     <div class="grid-1">
-        <div class="grid-item">جامع الرفاعى
+        <div class="grid-item"><y>جامع الرفاعى</y>
             <div class="col">
                 <div class="image-container">
                     <div class="image-frame">
@@ -173,7 +221,7 @@
                 </div>        
             </div>
         </div>
-        <div class="grid-item">الجامع اﻷزرق
+        <div class="grid-item"><y>الجامع اﻷزرق</y>
             <div class="col">
                 <div class="image-container">
                     <div class="image-frame">
@@ -183,7 +231,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid-item">أيه صوفيا
+        <div class="grid-item"><y>أيه صوفيا</y>
             <div class="col">
                 <div class="image-container">
                     <div class="image-frame">
@@ -193,7 +241,7 @@
                 </div>
             </div>
         </div>
-        <div class="grid-item">EGYPT
+        <div class="grid-item"><y>السلطان حسن</y>
             <div class="col">
                 <div class="image-container">
                     <div class="image-frame">
@@ -206,32 +254,15 @@
     
 </div>
         <!-- Add more grid items as needed -->
-    <!/section>       
+    <hr>       
+
         <div class="grid">
             <div class="grid-item grid-item-1" >
                 <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="">
-                    <div class="card-body">
-                        <h5 class="card-title" >مكتب اﻷداره</h5>
-                        <p class="card-text">
-                           اﻷعضاء<br>
-                                
-                            السيد / مسئول رقم  1 <br>
-                            السيد / مسئول رقم  2 <br>
-                            السيد / مسئول رقم  3 <br>
-                            السيد / مسئول رقم  4 <br>
-                           </p>
-
-                        <!a href="#" class="btn btn-primary">link</a>
-                        <a  href="images/Hagia-Sophia.jpeg" target="_blank">View</a>" 
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
                     <img src="images/clinic.jpeg"  class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">العياده الطبيه</h5>
+                        <h5 class="card-title"><y>العياده الطبيه</y></h5>
                         <p class="card-text">
-                                 
                                     مواعيد العمل 
                                     الساعه  09:00 صباحا    -  الساعه 7:00 مساء
                                     ارقام اﻷتصال: 
@@ -240,13 +271,13 @@
                                     مسئول اﻷستقبال :
                                     السيد: دكتور  س 
                             .</p>
-                        <a href="#" class="btn btn-primary">link</a>
+                        <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
                     <img src="images/pharmacy.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Pharmacy</h5>
+                        <h5 class="card-title"><y>الصيدليه</y></h5>
                             <p class="card-text">
                                                         الصيدليه :
                                 مواعيد العمل :
@@ -257,29 +288,29 @@
                                 مسئول اﻷستقبال :
                                 السيد: دكتور  س 
                             </p>
-                        <a href="#" class="btn btn-primary">link</a>
+                        <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
                     <img src="images/restaurnt1.jpeg" class="card-img-top" alt="">
                     <div class="card-body">
-                      <h5 class="card-title"></h5>
+                      <h5 class="card-title">مطعم أبومازن</h5>
                       <p class="card-text"></p>
                       <a href="
-                      https://lm.facebook.com/l.php?u=https%3A%2F%2Fmaps.app.goo.gl%2FQNjnEExGxPj4fbZi8%3Ffbclid%3DIwAR0SCgGneN8-f0sbZfmg6JI_0sDRJp8FmnnvOR_zMFcbQRwAHA3iUKyKbg0&h=AT3QIgxSyAm6ZgOOFRVwoiVncQiCyNRGFub49vSIE89cLYYQ7phP23MaFM4lFtiNOlBCdZ4bxFh3623R0gUJr-QAwtwygAvwcMoIzJ3UR9emBxU0mhkqVkrxcGSltfD0G78w8tXnW_w5Lts">Go somewhere</a>
+                      https://lm.facebook.com/l.php?u=https%3A%2F%2Fmaps.app.goo.gl%2FQNjnEExGxPj4fbZi8%3Ffbclid%3DIwAR0SCgGneN8-f0sbZfmg6JI_0sDRJp8FmnnvOR_zMFcbQRwAHA3iUKyKbg0&h=AT3QIgxSyAm6ZgOOFRVwoiVncQiCyNRGFub49vSIE89cLYYQ7phP23MaFM4lFtiNOlBCdZ4bxFh3623R0gUJr-QAwtwygAvwcMoIzJ3UR9emBxU0mhkqVkrxcGSltfD0G78w8tXnW_w5Lts">الموقع</a>
                     </div>
                 </div>	
                 <div class="card" style="width: 18rem;">
                     <img src="images/mechanic.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
-                      <p class="card-text">ورشه اصلاح جميع انواع الكاوتش
+                      <p class="card-text">
                         Vehicle repair shop
                         10+ years in business
                         Closed ⋅ Opens 09am Fri
                         Zeitoun
                         011 23111609.</p>
-                      <a href="#" class="btn btn-primary">link</a>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 
@@ -296,33 +327,50 @@
                 
         </div>
         <div class="grid-item grid-item-3">
-                <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="...">
+            <div class="card" style="width: 18rem;">
+                <table>
+                    <tr>
+                      <th>الصلاه</th>
+                      <th>وقت</th>
+                    </tr>
+                    <tr>
+                      <td>الفجر</td>
+                      <td class="prayer-time" id="fajr"></td>
+                    </tr>
+                    <tr>
+                      <td>الظهر</td>
+                      <td class="prayer-time" id="dhuhr"></td>
+                    </tr>
+                    <tr>
+                      <td>العصر</td>
+                      <td class="prayer-time" id="asr"></td>
+                    </tr>
+                    <tr>
+                      <td>المغرب</td>
+                      <td class="prayer-time" id="maghrib"></td>
+                    </tr>
+                    <tr>
+                      <td>العشاء</td>
+                      <td class="prayer-time" id="isha"></td>
+                    </tr>
+                  </table>   
+            </div>
+            <div class="card" style="width: 18rem;">
+                    <img src="images/Pic23.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">معرض منتجات الريف اﻷوربى
                         القاعه الصيفيه - مدخل الريف اﻷوربي
                         </h5>
                       <p class="card-text"></p>
                       <a href="page-farms.html" class="btn btn-primary">عرض المنتجات</a>
-                   
-                    </div>
-                </div>
-                <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="....">
-                    <div class="card-body">
-                      <h5 class="card-title">Public services</h5>
-                      <p class="card-text">اعلان هام !
-                        نظراً لبدء المرحلة الثانية من رصف الطريق الرئيسي  ببلاط الانترلوك اليوم الثلاثاء الموافق الثالث من اكتوبر ، سيتم إغلاق بوابه الدكتور عبد الله سعد من الاتجاهين بعد ظهر اليوم ،  وتحويل كل المرور الي بوابة الزهراء ، ستكون فترة الاغلاق لمدة خمسة ايام علي الاكثر ، وشكرًا علي تعاونكم !
-                        .</p>
-                      <a href="#" class="btn btn-primary">لينك لموقع اﻷداره</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
                     <img src="images/cook-house.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">	خدمات عامه - مطعم</h5>
+                      <h5 class="card-title">خدمات عامه - مطعم</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
@@ -330,15 +378,15 @@
                     <div class="card-body">
                       <h5 class="card-title">محل تجاري - مخبز</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">لينك لموقع المحل</a>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
-                      <h5 class="card-title">ورشه خدمه سيارات</h5>
+                      <h5 class="card-title"> خدمات  سيارات</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">لينك لموقع المحل</a>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
@@ -346,24 +394,20 @@
                     <div class="card-body">
                       <h5 class="card-title">خدمات عامه - كهربائى</h5>
                       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">لينك لموقع المحل</a>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
                 <div class="card" style="width: 18rem;">
-                    <img src="" class="card-img-top" alt="...">
+                    <img src="images/tree1.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">مزارع الريف</h5>
-                      <p class="card-text">مزرعه حاجه -فاطمه<br>
-                        الموقع<br>
-                        المنتجات<br>
-                        ارقام اﻷتصال.<br>
-                    </p>
-                      <a href="#" class="btn btn-primary">لينك لموقع المزرعه </a>
+                      <p class="card-text">مزرعه النور<br>
+                      <a href="#" class="btn btn-primary">عرض المزيد</a>
                     </div>
                 </div>
             </div>
-            <a href="https://www.rasd-news.com/" ></a>
-            <!-- Add more grid items as needed -->
+            <a href="https://rassd.net/" ></a>
+             <!-- Add more grid items as needed -->
         </div>
     </body>
  </html> 

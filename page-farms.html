@@ -49,11 +49,12 @@
     .grid-item-2 {
             grid-column: 2;
             width:100%;
-                  
+            /*background-color: darkmagenta; */             
     }
     .grid-item-3 {
             grid-column: 3;
             width:100%;
+            direction:rtl;
          /*  align-items: left; */
 
     }
@@ -63,15 +64,7 @@
             /*grid-template-columns: 1fr 2fr 1fr; /* Adjust the number of columns as needed */
             grid-gap: 3px; /* Adjust the gap between grid items as needed */
             }
- 
-   /* .grid-content{
-            border-color: crimson;
-            border-style: double;
-            border-width: 20px;
-            margin-top:10px;         
-        }
-    */
-    .grid-item {
+   .grid-item {
             display: flex;
             flex-direction: column; 
             text-align: center;
@@ -82,8 +75,7 @@
             padding:20px;
             
         }
-
-        
+       
     .grid-1 {
             display:grid;
             grid-template-columns: repeat(4, 1fr); /* Adjust the nber of columns as needed */
@@ -91,14 +83,40 @@
             }
 
     h1{
-        font-style: italic;
+        font-style:normal;
         text-align: center;
-        font-weight: 900;
-      
+        font-weight:bolder;
+        color:gold;
+              
          } 
     h3{
         text-decoration: underline;
     }            
+ 
+    .date{
+        background-color:darkmagenta ;
+        color: white;
+    }
+    .time{
+        /*background-color: crimson;*/
+        color: darkgreen;
+        font-weight: bolder;
+    }
+    th{
+        background-color:darkgreen;
+        color:antiquewhite
+    }
+    .prayer-time {
+      font-family: "Courier New", monospace;
+      font-size: 20px;
+      direction:rtl    ;
+      color: blue;
+    }
+    y{
+        color:white;
+        background-color: darkmagenta;
+        font-size: large;
+    }
 
     .card-title{
       text-align: center;
@@ -109,14 +127,13 @@
   .list-group-item {
       text-align: right;
     } 
-        
+       
   .list-group {
       text-align: center;
       background-color:0;
       font-style: italic;
       font-weight: 800;
     } 
-
     .card-body{
       text-align: center;
       text-decoration: underline;
@@ -124,76 +141,103 @@
       color: blue;
       
     }
-
-    .clock {
-      font-family: "Courier New", monospace;
-      font-size: 25px;
-      color: blue;
-      background-color: gold;
-      text-align: center;
-    }
 </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
     <script>
-      function displayDigitalClock() {
-        var currentDate = new Date();
-        var hours = currentDate.getHours();
-        var minutes = currentDate.getMinutes();
-        var seconds = currentDate.getSeconds();
-  
-        // Format the time
-        var formattedTime = formatTime(hours, minutes, seconds);
-  
-        // Display the time on the web page
-        document.getElementById("clock").textContent = formattedTime;
-  
-        // Update the clock every second
-        setTimeout(displayDigitalClock, 1000);
-      }
-  
-      function formatTime(hours, minutes, seconds) {
-        hours = addLeadingZero(hours);
-        minutes = addLeadingZero(minutes);
-        seconds = addLeadingZero(seconds);
-  
-        return hours + ":" + minutes + ":" + seconds;
-      }
-  
-      function addLeadingZero(number) {
-        if (number < 10) {
-          return "0" + number;
+    
+        function displayDate() {
+          var currentDate = new Date();
+          var day = getDayName(currentDate.getDay());
+          var month = getMonthName(currentDate.getMonth());
+          var date = currentDate.getDate();
+          var year = currentDate.getFullYear();
+    
+          // Format the date
+          var formattedDate = day + ", " + month + " " + date + ", " + year;
+    
+          // Display the date on the web page
+          document.getElementById("date").textContent = formattedDate;
         }
-        return number;
-      }
+        function getDayName(dayIndex) {
+          var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          return days[dayIndex];
+        }
+        function getMonthName(monthIndex) {
+          var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          return months[monthIndex];
+        }
+    //------------
+          function displayTime() {
+          var currentDate = new Date();
+          var hours = currentDate.getHours();
+          var minutes = currentDate.getMinutes();
+          var seconds = currentDate.getSeconds();
+          // Format the time
+          var formattedTime = formatTime(hours, minutes, seconds);
+          document.getElementById("time").textContent = formattedTime;
+          // Update the clock every second
+          setTimeout(displayTime, 1000);
+        }
+        function formatTime(hours, minutes, seconds) {
+          hours = addLeadingZero(hours);
+          minutes = addLeadingZero(minutes);
+          seconds = addLeadingZero(seconds);
+          return hours + ":" + minutes + ":" + seconds;
+        }
+        function addLeadingZero(number) {
+          if (number < 10) {
+            return "0" + number;
+          }
+          return number;
+        }
+        function fetchPrayerTimes() {
+          fetch('https://api.aladhan.com/v1/timingsByCity?city=cairo&country=egypt&method=1')
+            .then(response => response.json())
+            .then(data => {
+              var prayerTimes = data.data.timings;
+              displayPrayerTimes(prayerTimes);
+            })
+            .catch(error => {
+              console.log('Error fetching prayer times:', error);
+            });
+        }
+        function displayPrayerTimes(prayerTimes) {
+          document.getElementById("fajr").textContent = prayerTimes.Fajr;
+          document.getElementById("dhuhr").textContent = prayerTimes.Dhuhr;
+          document.getElementById("asr").textContent = prayerTimes.Asr;
+          document.getElementById("maghrib").textContent = prayerTimes.Maghrib;
+          document.getElementById("isha").textContent = prayerTimes.Isha;
+        }
+    
+
     </script> 
   
 </head>
-<body  onload="displayDigitalClock()"
- <div class="container"> 
+<body onload= "displayDate(); displayTime(); fetchPrayerTimes()" >
     <div class="grid-container">
-    
         <div class="grid-item grid-item-1" >
-          <a href="https://rassd.net" class="link target=_blank">
-            <i class="fa fa-fw fa-newspaper-o"></i> &nbsp&nbspأخبار&nbsp</a>    
-          <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link">
-            <i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
-          <a href="https://wa-me/201019301893" class="link">
-            <i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp</a>
-          <a href="mailto:s.refaat@mail.com" class="link">
-            <i class="fa fa-fw fa-envelope"></i>&nbsp Mail &nbsp </a>
+            <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i><y>&nbsp&nbspأخبار &nbsp</y></a>    
+            <a  href="mailto:s.refaat@mail.com" class="link"><i class="fa fa-fw fa-envelope"></i><y>&nbsp Mail &nbsp </y></a>
+    
+            <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
+            <a href="https://wa-me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbsp&nbspWhatsApp</a>
         </div>
         <div class="grid-item grid-item-2">
-          <div class="shadow p-3 mb-3 badge-primary "><h1>مجتمع الريف اﻷوربي  </h1></div>
+            <div class="shadow p-2 badge-primary"><h1>مجتمع الريف اﻷوربي  </h1></div>
         </div>
         <div class="grid-item grid-item-3">
-          <div class="clock" id="clock"></div>
-            <a  href="view_gallery.html" class="link"> <i class="fa fa-camera-retro"></i>&nbsp معرض صور </a>
-            <a  href="map-page2.html"><i class="fa fa-search"></i>&nbsp الموقع</a>
-          </div>
+            <div class="date" id="date"></div>
+            <div class="time" id="time"></div>
+            <a  href="view_gallery.html" class="link"> <i class="fa fa-camera-retro"></i><y>&nbsp&nbsp معرض صور &nbsp&nbsp</y></a>
+            <a  href="map-page2.html"><i class="fa fa-search"></i><y>&nbsp الموقع &nbsp</y></a>
         </div>
-      
+    </div>
+    <hr>
+    <!------------------>
+
       <div class="card-group">
       
         <div class="card" style="width: 18rem;">

@@ -2,7 +2,9 @@
 <html>
   <title> elreef eloroby Community </title>
 <head>    
-  <style>
+  <meta charset="UTF-8" />
+   
+<style>
     .image-container {
         display: flex;
         }
@@ -56,9 +58,7 @@
             width:100%;
             direction:rtl;
          /*  align-items: left; */
-
     }
-
     .grid-container {
             display: grid;
             /*grid-template-columns: 1fr 2fr 1fr; /* Adjust the number of columns as needed */
@@ -75,13 +75,11 @@
             padding:20px;
             
         }
-       
     .grid-1 {
             display:grid;
             grid-template-columns: repeat(4, 1fr); /* Adjust the nber of columns as needed */
             grid-gap: 0%; /* Adjust the gap between grid items */
             }
-
     h1{
         font-style:normal;
         text-align: center;
@@ -92,7 +90,6 @@
     h3{
         text-decoration: underline;
     }            
- 
     .date{
         background-color:darkmagenta ;
         color: white;
@@ -117,18 +114,15 @@
         background-color: darkmagenta;
         font-size: large;
     }
-
     .card-title{
       text-align: center;
       color: blue;
       background-color: lightblue;
     }
-
-  .list-group-item {
+    .list-group-item {
       text-align: right;
     } 
-       
-  .list-group {
+    .list-group {
       text-align: center;
       background-color:0;
       font-style: italic;
@@ -139,7 +133,6 @@
       text-decoration: underline;
       font-weight: bolder;
       color: blue;
-      
     }
 </style>
 
@@ -147,7 +140,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
     <script>
-    
         function displayDate() {
           var currentDate = new Date();
           var day = getDayName(currentDate.getDay());
@@ -212,14 +204,20 @@
           document.getElementById("isha").textContent = prayerTimes.Isha;
         }
     
+    // JavaScript
+document.getElementById('whatsapp-call-btn').addEventListener('click', function() {
+  var phoneNumber = '1234567890'; // Replace with the desired phone number
 
+  // Open WhatsApp with the specified phone number
+  window.open('https://wa.me/' + phoneNumber);
+});
     </script> 
-  
-</head>
+  </head>
 <body onload= "displayDate(); displayTime(); fetchPrayerTimes()" >
     <div class="grid-container">
         <div class="grid-item grid-item-1" >
-            <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i><y>&nbsp&nbspأخبار &nbsp</y></a>    
+          <a href="about.html" target="_blank"><i class="fa fa-bell-o"></i><y>&nbsp&nbspعن الموقع &nbsp</y></a>    
+          <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i><y>&nbsp&nbspأخبار &nbsp</y></a>    
             <a  href="mailto:s.refaat@mail.com" class="link"><i class="fa fa-fw fa-envelope"></i><y>&nbsp Mail &nbsp </y></a>
     
             <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
@@ -252,11 +250,11 @@
             <li class="list-group-item">بصل وثوم ابيض / أحمر</li>
             <li class="list-group-item"> بازنجان رومى وابيض للحشو</li>
             <li class="list-group-item"> بصل و  طماطم</li>
-            <a  href="https://wa.me/201125136136" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa.me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
               رقم اﻷتصال :01125136136
           </ul>
           <div class="card-body">
-            <a href="farm-shaima.html" class="card-link">  <i class="fa fa-link "></i> Farm link</a>
+            <a href="farm-shaima.html" class="card-link"  target="_blank>  <i class="fa fa-link "></i> Farm link</a>
           </div>
         </div>       
         
@@ -273,11 +271,11 @@
             <li class="list-group-item">جبنه قديمه/قريش/مورته</li>
             <li class="list-group-item">زبده بلدى جاموسي وبقرى</li>
             <li class="list-group-item">عيش بلدى</li>
-            <a  href="https://wa.me/201000002485" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa.me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
                             رقم اﻷتصال :01000002485</p>
           </ul>
           <div class="card-body">
-            <a href="farm-sabrin.html" class="card-link"><i class="fa fa-link "></i>Farm link</a>
+            <a href="farm-sabrin.html" class="card-link" target="_blank><i class="fa fa-link "></i>Farm link</a>
           </div>
         </div>
        
@@ -292,14 +290,13 @@
             <li class="list-group-item">قطعيات لحوم فاخره</li>
             <li class="list-group-item">وجبات بيتى </li>
             <li class="list-group-item">منتجات قها</li>
-            <a  href="https://wa.me/201001474050" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
-              رقم اﻷتصال :01001474050
+            <a  href="https://wa-me/201001474050" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+              رقم اﻷتصال :201001474050
           </ul>
           <div class="card-body">
-            <a href="farm-ebiary.html" class="card-link"><i class="fa fa-link "></i>Farm link</a>
+            <a href="farm-ebiary.html" class="card-link"  target="_blank><i class="fa fa-link "></i>Farm link</a>
           </div>
         </div>
-        
         <div class="card" style="width: 18rem;">
           <img src="images/bread.jpeg" class="card-img-top" alt="...">
           <div class="card">
@@ -310,7 +307,7 @@
             <li class="list-group-item">اطباق دجاج مدبوح طازج</li>
             <li class="list-group-item">اطباق بط مدبوح طازج</li>
             <li class="list-group-item"></li>
-            <a  href="https://wa.me/201098875936" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa-me/201098875936" class="link"  target="_blank><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
                 رقم اﻷتصال :01098875936
           </ul>
           <div class="card-body">
@@ -332,11 +329,11 @@
           <ul class="list-group list-group-flush">
             <li class="list-group-item">ليمون بلدى</li>
             <li class="list-group-item">ورق عنب</li>
-            <a  href="https://wa.me/201001551946" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa-me/201001551946" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
               رقم اﻷتصال :01001551946
           </ul>
           <div class="card-body">
-            <a href="farm-raheem.html" class="card-link"><i class="fa fa-link "></i>Card link</a>
+            <a href="farm-raheem.html" class="card-link target="_blank"><i class="fa fa-link "></i>Card link</a>
           </div>
         </div>
         <div class="card" style="width: 18rem;">
@@ -391,16 +388,31 @@
         <div class="row row-cols-1 row-cols-md-2 g-4">
           <div class="col">
             <div class="card">
-              <img src="images/Rifai.jpg" class="card-img-top" alt="...">
+              <img src="images/sawsan9.jpeg" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <h5 class="card-title">مزرعه السوسن</h5>
+                <p class="card-text">الموقع بالريف اﻷوربي فيينا - طريق 22</p>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">برتقال ابو سره </li>
+                  <li class="list-group-item">بلح زغلول و بلح برحى</li>
+                  <li class="list-group-item">مانجو كيت</li>
+                  <li class="list-group-item">بيض بلدى</li>
+                  <li class="list-group-item">بصل أحمر و أبيض</li>
+                  <li class="list-group-item"> </li>
+                  <a  href="https://wa-me/201006611458" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+                  رقم اﻷتصال :201006611458
+                  <div class="card-body">
+                    <a href="farm-sawsan.html" class="card-link"  target="_blank">  <i class="fa fa-link "></i> Farm link</a>
+                  </div>
+                            
+                </ul>
+      
               </div>
             </div>
           </div>
           <div class="col">
             <div class="card">
-              <img src="images/Rifai.jpg" class="card-img-top" alt="...">
+              <img src="" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

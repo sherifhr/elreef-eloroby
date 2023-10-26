@@ -80,16 +80,18 @@
             grid-template-columns: repeat(4, 1fr); /* Adjust the nber of columns as needed */
             grid-gap: 0%; /* Adjust the gap between grid items */
             }
-    h1{
+    h1,h2{
         font-style:normal;
         text-align: center;
         font-weight:bolder;
         color:gold;
+        font-family: 'Amiri', serif;
               
          } 
     h3{
         text-decoration: underline;
-    }            
+        font-family: 'Amiri', serif;
+      }            
     .date{
         background-color:darkmagenta ;
         color: white;
@@ -110,8 +112,8 @@
       color: blue;
     }
     y{
-        color:white;
-        background-color: darkmagenta;
+        color:blue;
+        background-color: ;
         font-size: large;
     }
     .card-title{
@@ -134,7 +136,11 @@
       font-weight: bolder;
       color: blue;
     }
+
 </style>
+    @import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/amiri.css">;
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -235,7 +241,6 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
     </div>
     <hr>
     <!------------------>
-
       <div class="card-group">
       
         <div class="card" style="width: 18rem;">
@@ -254,7 +259,7 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
               رقم اﻷتصال :01125136136
           </ul>
           <div class="card-body">
-            <a href="farm-shaima.html" class="card-link"  target="_blank>  <i class="fa fa-link "></i> Farm link</a>
+            <a href="farm-shaima.html" class="card-link"  target="_blank">  <i class="fa fa-link "></i> Farm link</a>
           </div>
         </div>       
         
@@ -275,7 +280,8 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
                             رقم اﻷتصال :01000002485</p>
           </ul>
           <div class="card-body">
-            <a href="farm-sabrin.html" class="card-link" target="_blank><i class="fa fa-link "></i>Farm link</a>
+            <a href="farm-sabrin.html" class="card-link" target="_blank">
+              <i class="fa fa-link "></i>Farm link</a>
           </div>
         </div>
        
@@ -290,11 +296,12 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
             <li class="list-group-item">قطعيات لحوم فاخره</li>
             <li class="list-group-item">وجبات بيتى </li>
             <li class="list-group-item">منتجات قها</li>
-            <a  href="https://wa-me/201001474050" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa.me/201001474050" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
               رقم اﻷتصال :201001474050
           </ul>
           <div class="card-body">
-            <a href="farm-ebiary.html" class="card-link"  target="_blank><i class="fa fa-link "></i>Farm link</a>
+            <a href="farm-ebiary.html" class="card-link" target="_blank">
+              <i class="fa fa-link "></i>Farm link</a>
           </div>
         </div>
         <div class="card" style="width: 18rem;">
@@ -307,11 +314,12 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
             <li class="list-group-item">اطباق دجاج مدبوح طازج</li>
             <li class="list-group-item">اطباق بط مدبوح طازج</li>
             <li class="list-group-item"></li>
-            <a  href="https://wa-me/201098875936" class="link"  target="_blank><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
+            <a  href="https://wa.me/201098875936" class="link"><i class="fa fa-whatsapp "></i>&nbsp اتصل بنا &nbsp </a><br>
                 رقم اﻷتصال :01098875936
           </ul>
           <div class="card-body">
-             <a href="farm-fresh.html" class="card-link"><i class="fa fa-link "></i>Card link</a>
+             <a href="farm-fresh.html" class="card-link" target="_blank">
+              <i class="fa fa-link "></i>Card link</a>
           </div>
         </div>
   
@@ -333,14 +341,15 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
               رقم اﻷتصال :01001551946
           </ul>
           <div class="card-body">
-            <a href="farm-raheem.html" class="card-link target="_blank"><i class="fa fa-link "></i>Card link</a>
+            <a href="farm-raheem.html" class="card-link" target="_blank">
+              <i class="fa fa-link"></i>Card link</a>
           </div>
         </div>
         <div class="card" style="width: 18rem;">
           <img src="" class="card-img-top" alt="...">
           <div class="card-body">
-            <h4 class="card-title">مزرعه</h4>
-            <p class="card-text"></p>
+            <h4 class="card-title">مزرعه </h4>
+            <p class="card-text">انتاج حيوانى</p>
           </div>
           <ul class="list-group list-group-flush">
             <li class="list-group-item"></li>
@@ -414,7 +423,7 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
             <div class="card">
               <img src="" class="card-img-top" alt="...">
               <div class="card-body">
-                <h5 class="card-title">Card title</h5>
+                <h5 class="card-title">مزرعه الشاعر لﻷنتاج الحيوانى</h5>
                 <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               </div>
             </div>
@@ -438,5 +447,9 @@ document.getElementById('whatsapp-call-btn').addEventListener('click', function(
             </div>
           </div>
         </div>
+        <footer>
+          &copy; Sherif python Website
+      </footer>
+  
   </body>
 </html>

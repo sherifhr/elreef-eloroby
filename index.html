@@ -3,25 +3,22 @@
 <title> ElReef ElOrobee Community </title>
 <head>
   <meta charset="UTF-8" />
-   
+     
 <style>
     .image-container {
         display: flex;
         }
-
     .image-frame {
         flex:1;
         display:inline;
         justify-content:space-evenly;
         }
-
     .image-frame img {
         display:inline-flex ;
         width: 130px;
         height: 130px;
         border-radius: 50%;
         overflow: hidden;
-
         }
     .image-container {
         object-fit: contain;
@@ -60,7 +57,6 @@
          /*  align-items: left; */
 
     }
-
     .grid-container {
             display: grid;
             /*grid-template-columns: 1fr 2fr 1fr; /* Adjust the number of columns as needed */
@@ -77,25 +73,27 @@
             padding:20px;
             
         }
-       
     .grid-1 {
             display:grid;
             grid-template-columns: repeat(4, 1fr); /* Adjust the nber of columns as needed */
             grid-gap: 0%; /* Adjust the gap between grid items */
             }
 
-    h1{
+    h1, h2{
         font-style:normal;
         text-align: center;
         font-weight:bolder;
         color:gold;
-              
+        font-family:'Amiri', serif;
          } 
     h3{
         text-decoration: underline;
+        font-family: 'Amiri', serif;
     }            
- 
-    .date{
+    p, h5{
+      font-family: 'Amiri', serif;
+    }
+     .date{
         background-color:darkmagenta ;
         color: white;
     }
@@ -115,11 +113,12 @@
       color: blue;
     }
     y{
-        color:white;
-        background-color:darkmagenta;
+        color:blue;
+        background-color:;
         font-size: large;
-    }
-
+        font-family: 'Amiri', serif;
+      }
+  
 </style>
 <script>
     function displayDate() {
@@ -186,6 +185,8 @@
       document.getElementById("isha").textContent = prayerTimes.Isha;
     }
 </script> 
+@import url(https://fonts.googleapis.com/earlyaccess/amiri.css);
+<link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/amiri.css";>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -282,8 +283,7 @@
                     <img src="images/pharmacy.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><y>الصيدليه</y></h5>
-                            <p class="card-text">
-                                                        الصيدليه :
+                            <p class="card-text">الصيدليه :
                                 مواعيد العمل :
                                 الساعه  09:00 صباحا    -  الساعه 10:00 مساء
                                 ارقام اﻷتصال: 
@@ -413,5 +413,9 @@
             <a href="https://rassd.net/" ></a>
              <!-- Add more grid items as needed -->
         </div>
+        <footer>
+          &copy; Sherif python Website
+      </footer>
+  
     </body>
  </html> 

@@ -85,8 +85,10 @@
         text-align: center;
         font-weight:bolder;
         color:gold;
-        font-family:'Amiri', serif;
-         } 
+        /*font-family:'Amiri', serif;*/
+        font-family: 'jazeera';
+        /*font-family: 'jazeera-light';*/
+      } 
     h3{
         text-decoration: underline;
         font-family: 'Amiri', serif;
@@ -117,7 +119,8 @@
         color:blue;
         background-color:;
         font-size: large;
-        font-family: 'Amiri', serif;
+        /*font-family: 'Amiri', serif;*/
+        font-family: 'jazeera-light';
       }
   
 </style>
@@ -186,7 +189,7 @@
       document.getElementById("isha").textContent = prayerTimes.Isha;
     }
 </script> 
-
+<link rel="stylesheet" href="http://www.fontstatic.com/f=jazeera,jazeera-light">
 <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/amiri.css";>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -195,11 +198,11 @@
 <body onload= "displayDate(); displayTime(); fetchPrayerTimes()" >
     <div class="grid-container">
         <div class="grid-item grid-item-1" >
-
           <a href="about.html" target="_blank"><i class="fa fa-bell-o"></i><y>&nbsp&nbspعن الموقع &nbsp</y></a>    
           <a href="https://rassd.net" target="_blank"><i class="fa fa-fw fa-newspaper-o"></i><y>&nbsp&nbspأخبار &nbsp</y></a>    
             <a  href="mailto:s.refaat@mail.com" class="link"><i class="fa fa-fw fa-envelope"></i><y>&nbsp Mail &nbsp </y></a>
-            <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
+            <a href="https://chat.whatsapp.com/Bsqdb09KkgnIAabHORAT4i" class="link">
+              <i class="fa fa-whatsapp "></i>&nbsp&nbspWhatsApp Chating</a>
             <a href="https://wa-me/201019301893" class="link"><i class="fa fa-whatsapp "></i>&nbsp&nbsp&nbspWhatsApp</a>
         </div>
         <div class="grid-item grid-item-2">
@@ -208,7 +211,8 @@
         <div class="grid-item grid-item-3">
             <div class="date" id="date"></div>
             <div class="time" id="time"></div>
-            <a  href="view_gallery.html" class="link"> <i class="fa fa-camera-retro"></i><y>&nbsp&nbsp معرض صور &nbsp&nbsp</y></a>
+            <a  href="view_gallery.html" class="link"> 
+              <i class="fa fa-camera-retro"></i><y>&nbsp&nbsp معرض صور &nbsp&nbsp</y></a>
             <a  href="map-page2.html"><i class="fa fa-search"></i><y>&nbsp الموقع &nbsp</y></a>
         </div>
     </div>
@@ -221,7 +225,6 @@
                     <div class="image-frame">
                         <img src="images/Rifai.jpg" alt="Image Description">
                         <a  href="images/Rifai.jpg" target="_blank">View</a>" 
-                        <!img src="static/images/Rifai.jpg" alt="Image Description">
                     </div>
                 </div>        
             </div>
@@ -283,7 +286,7 @@
                     <img src="images/pharmacy.jpeg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title"><y>الصيدليه</y></h5>
-                            <p class="card-text">الصيدليه :
+                            <p class="card-text">الصيدليه : >
                                 مواعيد العمل :
                                 الساعه  09:00 صباحا    -  الساعه 10:00 مساء
                                 ارقام اﻷتصال: 
